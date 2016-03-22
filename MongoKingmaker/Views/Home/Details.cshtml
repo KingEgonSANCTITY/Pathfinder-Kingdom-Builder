@@ -1,0 +1,71 @@
+﻿@model MongoKingmaker.Models.Kingdom
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Kingdom</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.name)
+        </dd>
+
+        <dt>
+            <a href="@Url.Action("Alignment", "Home", new { id = Model._id.ToString(), size = Model.alignments.Count })">@Html.DisplayNameFor(model => model.alignments)</a>
+        </dt>
+        <dd>
+        @foreach (var alignment in Model.alignments)
+        {
+            @Html.DisplayFor(alig => alignment.name);
+            <text></text>
+        }
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.kingdom_statistics)
+        </dt>
+        <dd>
+            @Html.DisplayNameFor(model => model.kingdom_statistics.Size): @Html.DisplayFor(model => model.kingdom_statistics.Size)  
+            @Html.DisplayNameFor(model => model.kingdom_statistics.Control_DC): @Html.DisplayFor(model => model.kingdom_statistics.Control_DC)  
+            @Html.DisplayNameFor(model => model.kingdom_statistics.Turn): @Html.DisplayFor(model => model.kingdom_statistics.Turn)  
+            @Html.DisplayNameFor(model => model.kingdom_statistics.Treasury): @Html.DisplayFor(model => model.kingdom_statistics.Treasury)  
+            @Html.DisplayNameFor(model => model.kingdom_statistics.Consumption): @Html.DisplayFor(model => model.kingdom_statistics.Consumption)  
+            @Html.DisplayNameFor(model => model.kingdom_statistics.Unrest): @Html.DisplayFor(model => model.kingdom_statistics.Unrest)  
+            @Html.DisplayNameFor(model => model.kingdom_statistics.Economy): @Html.DisplayFor(model => model.kingdom_statistics.Economy)  
+            @Html.DisplayNameFor(model => model.kingdom_statistics.Loyalty): @Html.DisplayFor(model => model.kingdom_statistics.Loyalty)  
+            @Html.DisplayNameFor(model => model.kingdom_statistics.Stability): @Html.DisplayFor(model => model.kingdom_statistics.Stability)
+        </dd>
+
+        <dt>
+            <a href="@Url.Action("Leader", "Home", new { id = Model._id.ToString(), index = 0})">@Html.DisplayNameFor(model => model.leaders)</a>
+        </dt>
+        <dd>
+            @foreach (var leader in Model.leaders)
+            {
+                <a href="@Url.Action("Leader", "Home", new { id = Model._id.ToString()})">@Html.DisplayFor(role => leader.role): @Html.DisplayFor(name => leader.name) </a>
+            }
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.hexes)
+        </dt>
+        <dd>
+            @foreach (var hex in Model.hexes)
+            {
+                @Html.DisplayFor(role => hex.location);
+                <text></text>
+            }
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

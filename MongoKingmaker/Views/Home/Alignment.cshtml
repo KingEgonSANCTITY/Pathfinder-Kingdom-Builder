@@ -1,0 +1,81 @@
+﻿@model MongoKingmaker.Models.UpdateModels.AlignmentUpdate
+
+@{
+    ViewBag.Title = "Alignment";
+}
+
+<h2>Alignment</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Alignment</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        @Html.HiddenFor(model => model.id, new { Value = Model.id})
+        
+        <div class="form-group">
+            @Html.Label("Alignment #1", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.left.name, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.left.name, "", new { @class = "text-danger" })
+            </div>
+            @Html.LabelFor(model => model.left.kingdom_attributes.economy, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.left.kingdom_attributes.economy, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.left.kingdom_attributes.economy, "", new { @class = "text-danger" })
+            </div>
+            @Html.LabelFor(model => model.left.kingdom_attributes.loyalty, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.left.kingdom_attributes.loyalty, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.left.kingdom_attributes.loyalty, "", new { @class = "text-danger" })
+            </div>
+            @Html.LabelFor(model => model.left.kingdom_attributes.stability, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.left.kingdom_attributes.stability, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.left.kingdom_attributes.stability, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        @Html.Label("")
+        <div class="form-group">
+            @Html.Label("Alignment #2", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.right.name, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.right.name, "", new { @class = "text-danger" })
+            </div>
+            @Html.LabelFor(model => model.right.kingdom_attributes.economy, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.right.kingdom_attributes.economy, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.right.kingdom_attributes.economy, "", new { @class = "text-danger" })
+            </div>
+            @Html.LabelFor(model => model.right.kingdom_attributes.loyalty, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.right.kingdom_attributes.loyalty, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.right.kingdom_attributes.loyalty, "", new { @class = "text-danger" })
+            </div>
+            @Html.LabelFor(model => model.right.kingdom_attributes.stability, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.right.kingdom_attributes.stability, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.right.kingdom_attributes.stability, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
